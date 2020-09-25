@@ -6,7 +6,7 @@ const Cart = (props) => {
     let total = 0;
     for(let i = 0; i < cart.length; i++){
         const product = cart[i];
-        total += product.price;
+        total = Math.round(total + product.price * product.quantity);
     }
     let shipping = 0;
     if(total > 15){
@@ -28,6 +28,10 @@ const Cart = (props) => {
             <p>Tax:{tax}</p>
             <p>Shipping Cost:{shipping}</p>
             <p>Total Cost:{GrandTotal}</p>
+            <br />
+            {
+                props.children
+            }
         </div>
     );
 };
